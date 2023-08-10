@@ -116,15 +116,20 @@ function mage_bus_search_list($return)
                     }
 
                     if ($is_on_date) {
-                        if (in_array(date('m-d', strtotime($p_j_date)), $bus_on_dates)) {
-                            $has_bus = true;
+                        if(wbtm_check_date_has_year($bus_on_dates, true)) { // Check date has year
+                            if (in_array(date('Y-m-d', strtotime($p_j_date)), $bus_on_dates)) {
+                                $has_bus = true;
+                            }
+                        } else { // check date has no year
+                            if (in_array(date('m-d', strtotime($p_j_date)), $bus_on_dates)) {
+                                $has_bus = true;
+                            }
                         }
                     } else {
 
                         // Offday schedule check
                         // $bus_stops_times = get_post_meta($id, 'wbtm_bus_bp_stops', true);
-                        // $bus_offday_schedules = get_post_meta($id, 'wbtm_offday_schedule', true);
-                        $bus_offday_schedules = mage_determine_offdate($id, $return, $start, $end);
+                        $bus_offday_schedules = get_post_meta($id, 'wbtm_offday_schedule', true);
 
                         // Get Bus Start Time
                         $start_time = '';
@@ -137,25 +142,32 @@ function mage_bus_search_list($return)
 
                         $start_time = mage_time_24_to_12($start_time); // Time convert 24 to 12
 
-                        $offday_current_bus = false; // Bus is running
-
+                        $offday_current_bus = false;
+                        // $s_datetime = new DateTime($j_date . ' ' . $start_time);
                         $s_datetime = date('Y-m-d H:i:s', strtotime($p_j_date));
-
                         if(wbtm_off_by_global_offdates($p_j_date)) { // Global off dates and days check
                             $offday_current_bus = true; // Bus is off
                         } else { // Local offdates check
                             if (!empty($bus_offday_schedules) && get_post_meta($id, 'show_off_day', true) === 'yes') {
 
                                 foreach ($bus_offday_schedules as $item) {
-    
+
                                     $c_iterate_date_from = $item['from_date'];
                                     // $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime($c_iterate_date_from . ' ' . $item['from_time']));
-                                    $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($p_j_date)).'-'.$c_iterate_date_from));
-    
+                                    if(!wbtm_check_date_has_year($c_iterate_date_from)) {
+                                        $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($p_j_date)).'-'.$c_iterate_date_from));
+                                    } else {
+                                        $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime($c_iterate_date_from));
+                                    }
+
                                     $c_iterate_date_to = $item['to_date'];
                                     // $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime($c_iterate_date_to . ' ' . $item['to_time']));
-                                    $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($p_j_date)).'-'.$c_iterate_date_to));
-    
+                                    if(!wbtm_check_date_has_year($c_iterate_date_to)) {
+                                        $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($p_j_date)).'-'.$c_iterate_date_to));
+                                    } else {
+                                        $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime($c_iterate_date_to));
+                                    }
+
                                     if (($s_datetime >= $c_iterate_datetime_from) && ($s_datetime <= $c_iterate_datetime_to)) {
                                         $offday_current_bus = true; // Bus is off
                                         break;
@@ -165,8 +177,7 @@ function mage_bus_search_list($return)
                         }
 
                         // Check Offday and date
-                        // if $offday_current_bus = false && mage_check_search_day_off_new = false
-                        if (!$offday_current_bus && !mage_check_search_day_off_new($id, $p_j_date, $return)) {
+                        if (!$offday_current_bus && !mage_check_search_day_off_new($id, $p_j_date)) {
                             $has_bus = true;
                         }
                     }
@@ -994,7 +1005,11 @@ function mage_next_date_suggestion($return, $single_bus, $target)
             $global_offdates_store = explode(',', $global_offdates);
             if($global_offdates_store) {
                 foreach($global_offdates_store as $global_offdate) {
-                    $global_offdates_arr[] = date('Y-m-d', strtotime($global_offdate .'-'. date('Y', strtotime($date))));
+                    if(wbtm_check_date_has_year($global_offdate)) {
+                        $global_offdates_arr[] = date('Y-m-d', strtotime($global_offdate));
+                    } else {
+                        $global_offdates_arr[] = date('Y-m-d', strtotime(date('Y', strtotime($date)).'-'.$global_offdate));
+                    }
                 }
             }
         }
@@ -1101,7 +1116,12 @@ function mage_next_date_suggestion_single($return, $single_bus, $target)
             $global_offdates_store = explode(',', $global_offdates);
             if($global_offdates_store) {
                 foreach($global_offdates_store as $global_offdate) {
-                    $global_offdates_arr[] = date('Y-m-d', strtotime($global_offdate .'-'. date('Y', strtotime($j_date))));
+                    if(wbtm_check_date_has_year($global_offdate)) {
+                        $global_offdates_arr[] = date('Y-m-d', strtotime($global_offdate));
+                    } else {
+                        $global_offdates_arr[] = date('Y-m-d', strtotime(date('Y', strtotime($j_date)).'-'.$global_offdate));
+                    }
+                    
                 }
             }
         }

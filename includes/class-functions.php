@@ -1870,8 +1870,13 @@ function wbtm_displayDates($date1, $date2, $format = 'd-m-Y')
 {
     $dates = array();
     $current_year = date('Y');
-    $current = strtotime($current_year.'-'.$date1);
-    $date2 = strtotime($current_year.'-'.$date2);
+    if(!wbtm_check_date_has_year($date1)) { // Date has not Year
+        $current = strtotime($current_year.'-'.$date1);
+        $date2 = strtotime($current_year.'-'.$date2);
+    } else {
+        $current = strtotime($date1); // Date has Year
+        $date2 = strtotime($date2);
+    }
     $stepVal = '+1 day';
     while ($current <= $date2) {
         $dates[] = date($format, $current);

@@ -225,7 +225,7 @@ class WBTMSettingPage
                             'details' => __('Please select global offdate', 'bus-ticket-booking-with-seat-reservation'),
                             'default' => '',
                             'type' => 'datepicker_multi',
-                            'date_format' => 'dd-mm',
+                            'date_format' => 'mm-dd',
                             'placeholder' => __('', 'bus-ticket-booking-with-seat-reservation'),
                         ),
                         array(

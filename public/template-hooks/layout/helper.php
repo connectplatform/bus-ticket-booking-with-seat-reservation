@@ -64,12 +64,12 @@ function mage_check_search_day_off_new($id, $j_date, $return = false)
         $same_bus_return_setting_global = mage_bus_setting_value('same_bus_return_setting', 'disable');
         if ($same_bus_return_setting_global === 'enable' && $return) {
             $weekly_offday = get_post_meta($id, 'weekly_offday_return', true) ?: array();
-            $j_date_day = strtolower(date('N', strtotime($j_date)));
+            $j_date_day = strtolower(date('w', strtotime($j_date)));
             if (in_array($j_date_day, $weekly_offday)) {
                 $get_day = 'yes';
             }
         } else {
-            $j_date_day = strtolower(date('N', strtotime($j_date)));
+            $j_date_day = strtolower(date('w', strtotime($j_date)));
             if (in_array($j_date_day, $weekly_offday)) {
                 $get_day = 'yes';
             }
@@ -1973,8 +1973,15 @@ function mage_single_bus_show($id, $start, $end, $j_date, $bus_bp_array, $return
         }
 
         if ($is_on_date) {
-            if (in_array(date('m-d', strtotime($j_date)), $bus_on_dates)) {
-                $has_bus = true;
+
+            if(wbtm_check_date_has_year($bus_on_dates, true)) { // Check date has year
+                if (in_array(date('Y-m-d', strtotime($j_date)), $bus_on_dates)) {
+                    $has_bus = true;
+                }
+            } else { // check date has no year
+                if (in_array(date('m-d', strtotime($j_date)), $bus_on_dates)) {
+                    $has_bus = true;
+                }
             }
         } else {
 
@@ -2005,11 +2012,19 @@ function mage_single_bus_show($id, $start, $end, $j_date, $bus_bp_array, $return
 
                         $c_iterate_date_from = $item['from_date'];
                         // $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime($c_iterate_date_from . ' ' . $item['from_time']));
-                        $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($j_date)).'-'.$c_iterate_date_from));
+                        if(!wbtm_check_date_has_year($c_iterate_date_from)) {
+                            $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($j_date)).'-'.$c_iterate_date_from));
+                        } else {
+                            $c_iterate_datetime_from = date('Y-m-d H:i:s', strtotime($c_iterate_date_from));
+                        }
 
                         $c_iterate_date_to = $item['to_date'];
                         // $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime($c_iterate_date_to . ' ' . $item['to_time']));
-                        $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($j_date)).'-'.$c_iterate_date_to));
+                        if(!wbtm_check_date_has_year($c_iterate_date_to)) {
+                            $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime(date('Y', strtotime($j_date)).'-'.$c_iterate_date_to));
+                        } else {
+                            $c_iterate_datetime_to = date('Y-m-d H:i:s', strtotime($c_iterate_date_to));
+                        }
 
                         if (($s_datetime >= $c_iterate_datetime_from) && ($s_datetime <= $c_iterate_datetime_to)) {
                             $offday_current_bus = true; // Bus is off
@@ -2436,14 +2451,19 @@ function wbtm_get_user_role($user_ID)
 // Global offdates process
 function wbtm_off_by_global_offdates($j_date) {
     $is_off = false;
-    $current_date = date('d-m-Y', strtotime($j_date));
+    $current_date = date('Y-m-d', strtotime($j_date));
     $current_year = date('Y', strtotime($j_date));
     $settings = get_option('wbtm_bus_settings');
     $global_offdates = isset($settings['wbtm_bus_global_offdates']) ? $settings['wbtm_bus_global_offdates'] : [];
     if($global_offdates) {
         $global_offdays_arr = explode(', ', $global_offdates);
         foreach($global_offdays_arr as $goffdate) {
-            if($current_date == date('d-m-Y', strtotime($goffdate.'-'.$current_year))) {
+            if(wbtm_check_date_has_year($goffdate)) {
+                $gooffdate_fix = date('Y-m-d', strtotime($goffdate));
+            } else {
+                $gooffdate_fix = date('Y-m-d', strtotime($current_year.'-'.$goffdate));
+            }
+            if($current_date == $gooffdate_fix) {
                 $is_off = true;
                 break;
             }
@@ -2461,4 +2481,24 @@ function wbtm_off_by_global_offdates($j_date) {
     }
 
     return $is_off;
+}
+
+// check date has year
+function wbtm_check_date_has_year($date, $is_array = false) {
+    if($is_array && is_array($date)) { // For array
+        $p = false;
+        foreach($date as $d) {
+            if(1970 != date('Y', strtotime($d))) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    } else { // for string
+        if(1970 != date('Y', strtotime($date))) {
+            return true;
+        }
+    }
+
+    return false;
 }

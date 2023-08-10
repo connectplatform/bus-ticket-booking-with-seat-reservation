@@ -114,7 +114,7 @@
             <label for="">Offdays</label>
             <div class='wbtm-dayoff-inner'>
                 <label for='sun'>
-                    <input type="checkbox" style="text-align: left;width: auto;" name="weekly_offday[]" value='7' id='sun' <?php echo ((in_array(7, $weekly_offday)) ? 'Checked' : '') ?>>
+                    <input type="checkbox" style="text-align: left;width: auto;" name="weekly_offday[]" value='0' id='sun' <?php echo ((in_array(0, $weekly_offday)) ? 'Checked' : '') ?>>
                     <?php _e('Sunday', 'bus-ticket-booking-with-seat-reservation'); ?>
                 </label>
                 <label for='mon'>
@@ -258,7 +258,7 @@
 
                         <div class='wbtm-dayoff-inner'>
                             <label for='r_sun'>
-                                <input type="checkbox" style="text-align: left;width: auto;" name="weekly_offday_return[]" value='7' id='r_sun' <?php echo ((in_array(7, $weekly_offday_return)) ? 'Checked' : '') ?>>
+                                <input type="checkbox" style="text-align: left;width: auto;" name="weekly_offday_return[]" value='0' id='r_sun' <?php echo ((in_array(0, $weekly_offday_return)) ? 'Checked' : '') ?>>
                                 <?php _e('Sunday', 'bus-ticket-booking-with-seat-reservation'); ?>
                             </label>
                             <label for='r_mon'>
