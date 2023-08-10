@@ -26,7 +26,6 @@
 <div class="wbtm-item-row wbtm-seat-type-conf">
     <label class="item-label"><?php _e('Seat Type', 'bus-ticket-booking-with-seat-reservation'); ?></label>
     <select name="wbtm_seat_type_conf" id="">
-        <option value=""><?php _e('Select Seat Type', 'bus-ticket-booking-with-seat-reservation'); ?></option>
         <option value="wbtm_seat_plan" <?php echo (($wbtm_seat_type_conf == 'wbtm_seat_plan') ? 'selected' : '') ?>>
             <?php _e('Seat Plan', 'bus-ticket-booking-with-seat-reservation'); ?>
         </option>
