@@ -416,6 +416,16 @@ class WBTMMetaBox
         $values = get_post_custom($post->ID);
 
         $ondates = get_post_meta($post->ID, 'wbtm_bus_on_dates', true);
+        if($ondates) {
+            $ondates_arr = explode(', ', $ondates);
+            $ondates_remove_year_arr = array();
+            if(wbtm_check_date_has_year($ondates_arr, true)) {
+                foreach($ondates_arr as $ond) {
+                    $ondates_remove_year_arr[] = date('m-d', strtotime($ond));
+                }
+            }
+            $ondates = $ondates_remove_year_arr ? implode(', ', $ondates_remove_year_arr) : $ondates;
+        }
         $wbtm_offday_schedule = maybe_unserialize(get_post_meta($post->ID, 'wbtm_offday_schedule', true));
         $show_operational_on_day = array_key_exists('show_operational_on_day', $values) ? $values['show_operational_on_day'][0] : '';
         $show_off_day = array_key_exists('show_off_day', $values) ? $values['show_off_day'][0] : '';
@@ -426,6 +436,16 @@ class WBTMMetaBox
 
         // Return
         $ondates_return = get_post_meta($post->ID, 'wbtm_bus_on_dates_return', true);
+        if($ondates_return) {
+            $ondates_return_arr = explode(', ', $ondates_return);
+            $ondates_return_remove_year_arr = array();
+            if(wbtm_check_date_has_year($ondates_return_arr, true)) {
+                foreach($ondates_return_arr as $ond) {
+                    $ondates_return_remove_year_arr[] = date('m-d', strtotime($ond));
+                }
+            }
+            $ondates_return = $ondates_return_remove_year_arr ? implode(', ', $ondates_return_remove_year_arr) : $ondates_return;
+        }
         $wbtm_offday_schedule_return = maybe_unserialize(get_post_meta($post->ID, 'wbtm_offday_schedule_return', true));
 
         $return_show_operational_on_day = array_key_exists('return_show_operational_on_day', $values) ? $values['return_show_operational_on_day'][0] : '';
