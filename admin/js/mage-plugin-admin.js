@@ -39,7 +39,6 @@
 
     $("input[name='wbtm_bus_on_dates']").multiDatesPicker({
       dateFormat: "mm-dd",
-      minDate:0,
       beforeShow: function( input, inst){
         $(inst.dpDiv).addClass('wbtm-hide-year');
       },
