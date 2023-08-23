@@ -61,6 +61,8 @@
     <input type="radio" id="zero_price_allow_yes" name="zero_price_allow" <?php echo ($zero_price_allow == "yes" ? " checked" : ""); ?> value="yes" style="margin-left: 20px"> <label for="zero_price_allow_yes"> <?php _e('Yes', 'bus-ticket-booking-with-seat-reservation') ?></label>
 </div>
 
+<?php do_action('wbtm_admin_option_before_seat_plan', $assigned_counter_agent_id) ?>
+
 <div class="wbtm-seat-plan-wrapper">
     <h2 class="wbtm-deck-title"><?php _e('Seat Plan for Lower Deck', 'bus-ticket-booking-with-seat-reservation') ?></h2>
     <div class="wbtm-lower-bus-seat-maker-wrapper">
