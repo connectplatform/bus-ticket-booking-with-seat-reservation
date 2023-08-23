@@ -39,7 +39,7 @@ class WBTM_Plugin_Admin {
 		wp_enqueue_style('codemirror', WBTM_PLUGIN_URL.'admin/assets/css/codemirror.css');
 		wp_enqueue_style('font-awesome-css-cdn', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css", null, 1);
 		wp_enqueue_style( 'mage-admin-css', WBTM_PLUGIN_URL . 'admin/css/mage-plugin-admin.css', array(), time(), 'all' );
-		wp_enqueue_style('jquery.timepicker.min', 'https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css');
+		wp_enqueue_style('jquery.timepicker.min', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.14.0/jquery.timepicker.min.css');
         wp_enqueue_style('wbtm_mp_style', WBTM_PLUGIN_URL.'admin/assets/css/mp_style.css','',time());
         wp_enqueue_style('wbtm_extra_style', WBTM_PLUGIN_URL.'admin/assets/css/extra_style.css','',time());
         wp_enqueue_script( 'wbtm_mp_script', WBTM_PLUGIN_URL . 'admin/assets/js/mp_script.js', array( 'jquery' ), time(), true );
@@ -63,8 +63,8 @@ class WBTM_Plugin_Admin {
         wp_enqueue_script('codemirror', WBTM_PLUGIN_URL.'admin/assets/js/codemirror.min.js', array( 'jquery' ),null, false);
         wp_enqueue_script('form-field-dependency', plugins_url( 'assets/js/form-field-dependency.js' , __FILE__ ) , array( 'jquery' ),null, false);
 		wp_enqueue_script( 'mage-plugin-js', WBTM_PLUGIN_URL . 'admin/js/mage-plugin-admin.js', array( 'jquery','jquery-ui-core','jquery-ui-datepicker', 'multidatepicker-wbtm' ), time(), false );
-		wp_enqueue_script('jquery.timepicker.min', 'https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js', array( 'jquery' ), 1, true);	
-		wp_enqueue_script('mage-admin-timepicker', WBTM_PLUGIN_URL.'admin/assets/js/mage-admin-timepicker.js', array( 'jquery' ));
+		wp_enqueue_script('jquery.timepicker.min', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.14.0/jquery.timepicker.min.js', array( 'jquery' ), 1, true);	
+		wp_enqueue_script('mage-admin-timepicker', WBTM_PLUGIN_URL.'admin/assets/js/mage-admin-timepicker.js', array( 'jquery', 'jquery.timepicker.min' ));
 	}
 
 
