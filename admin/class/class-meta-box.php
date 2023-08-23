@@ -262,6 +262,7 @@ class WBTMMetaBox
         $same_bus_return_val = isset($settings['same_bus_return_setting']) ? $settings['same_bus_return_setting'] : 'disable';
 
         $zero_price_allow = array_key_exists('zero_price_allow', $values) ? $values['zero_price_allow'][0] : 'no';
+        $assigned_counter_agent_id = array_key_exists('assigned_counter_agent_id', $values) ? $values['assigned_counter_agent_id'][0] : '';
 
         require_once WBTM_PLUGIN_DIR . 'admin/template/bus_configuration.php';
 
@@ -1029,11 +1030,45 @@ class WBTMMetaBox
             update_post_meta($pid, 'wbtm_bus_prices', $seat_prices);
             update_post_meta($pid, 'zero_price_allow', $zero_price_allow);
 
+            // assigned_counter_agent_id
+            if(isset($_POST['assigned_counter_agent_id'])) {
+                $assigned_counter_agent_id = $_POST['assigned_counter_agent_id'] ? $_POST['assigned_counter_agent_id'] : '';
+                $old_assingned_counter_agent_id = get_post_meta($pid, 'assigned_counter_agent_id', true);
+                if(($old_assingned_counter_agent_id == $assigned_counter_agent_id) && $assigned_counter_agent_id) { // old agent id
+                    $this->wbtm_assigned_counter_agent_id_add($pid, $assigned_counter_agent_id);
+                } else { // new agent id
+                    $this->wbtm_assigned_counter_agent_id_remove($pid, $old_assingned_counter_agent_id);
+                }
+                update_post_meta($pid, 'assigned_counter_agent_id', $assigned_counter_agent_id);
+            }
+            
+
 
             update_post_meta($pid, '_price', 0);
             $driver_seat_position = strip_tags($_POST['driver_seat_position']);
             update_post_meta($pid, 'driver_seat_position', $driver_seat_position);
             update_post_meta($pid, '_sold_individually', 'yes');
+        }
+    }
+
+    protected function wbtm_assigned_counter_agent_id_add($bus_id, $assigned_counter_agent_id)
+    {
+        if($assigned_counter_agent_id) { // new assign
+            $assigned_counter_bus_ids_old_data = get_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', true) ? maybe_unserialize(get_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', true)) : array();
+            array_push($assigned_counter_bus_ids_old_data, (string)$bus_id);
+            $assigned_counter_bus_ids_new_data = array_unique($assigned_counter_bus_ids_old_data);
+            update_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', $assigned_counter_bus_ids_new_data);
+        }
+    }
+
+    protected function wbtm_assigned_counter_agent_id_remove($bus_id, $assigned_counter_agent_id)
+    {
+        if($assigned_counter_agent_id) { // new assign
+            $assigned_counter_bus_ids_old_data = get_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', true) ? maybe_unserialize(get_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', true)) : array();
+            if (($key = array_search($bus_id, $assigned_counter_bus_ids_old_data)) !== false) {
+                unset($assigned_counter_bus_ids_old_data[$key]);
+            }
+            update_user_meta($assigned_counter_agent_id, 'csad_assigned_bus_ids', $assigned_counter_bus_ids_old_data);
         }
     }
 
