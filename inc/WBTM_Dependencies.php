@@ -16,6 +16,7 @@
 				add_action('admin_head', array($this, 'add_admin_head'), 5);
 				add_action('wp_head', array($this, 'add_frontend_head'), 5);
 				add_filter('single_template', array($this, 'load_single_template'), 10);
+				add_filter( 'template_include', array( $this, 'load_template' ) );
 			}
 			public function language_load(): void {
 				$plugin_dir = basename(dirname(__DIR__)) . "/languages/";
@@ -23,6 +24,7 @@
 			}
 			private function load_file(): void {
 				require_once WBTM_PLUGIN_DIR . '/inc/WBTM_Functions.php';
+				require_once WBTM_PLUGIN_DIR . '/inc/WBTM_Query.php';
 				require_once WBTM_PLUGIN_DIR . '/inc/WBTM_Layout.php';
 				//==================//
 				require_once WBTM_PLUGIN_DIR . '/admin/WBTM_Admin.php';
@@ -44,10 +46,10 @@
 				wp_enqueue_style('mp_font_awesome', '//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), '5.15.4');
 				wp_enqueue_style('mp_select_2', WBTM_PLUGIN_URL . '/assets/helper/select_2/select2.min.css', array(), '4.0.13');
 				wp_enqueue_script('mp_select_2', WBTM_PLUGIN_URL . '/assets/helper/select_2/select2.min.js', array(), '4.0.13');
-				//wp_enqueue_style( 'mp_owl_carousel', WBTM_PLUGIN_URL . '/assets/helper/owl_carousel/owl.carousel.min.css', array(), '2.3.4' );
-				//wp_enqueue_script( 'mp_owl_carousel', WBTM_PLUGIN_URL . '/assets/helper/owl_carousel/owl.carousel.min.js', array(), '2.3.4' );
 				wp_enqueue_style('mp_plugin_global', WBTM_PLUGIN_URL . '/assets/helper/mp_style/mp_style.css', array(), time());
 				wp_enqueue_script('mp_plugin_global', WBTM_PLUGIN_URL . '/assets/helper/mp_style/mp_script.js', array('jquery'), time(), true);
+				wp_enqueue_style('wbtm_global', WBTM_PLUGIN_URL . '/assets/global/wbtm_global.css', array(), time());
+				wp_enqueue_script('wbtm_global', WBTM_PLUGIN_URL . '/assets/global/wbtm_global.js', array('jquery'), time(), true);
 				do_action('add_wbtm_common_script');
 			}
 			public function admin_enqueue() {
@@ -77,7 +79,7 @@
 				// custom
 				wp_enqueue_script('wbtm_admin', WBTM_PLUGIN_URL . '/assets/admin/wbtm_admin.js', array('jquery'), time(), true);
 				wp_enqueue_style('wbtm_admin', WBTM_PLUGIN_URL . '/assets/admin/wbtm_admin.css', array(), time());
-				do_action('add_mpwem_admin_script');
+				do_action('add_wbtm_admin_script');
 			}
 			public function frontend_enqueue() {
 				$this->global_enqueue();
@@ -125,33 +127,13 @@
 			public function load_single_template($template) {
 				global $post;
 				if ($post->post_type == "wbtm_bus") {
-					$template_name = 'single-bus.php';
-					$template_path = 'bus-ticket-booking-with-seat-reservation/';
-					$default_path = WBTM_PLUGIN_DIR . '/public/templates/';
-					$bus_type = get_post_meta($post->ID, 'wbtm_seat_type_conf', true);
-					if ($bus_type === 'wbtm_seat_subscription') {
-						if (is_plugin_active('addon-bus-ticket-subscription/plugin.php')) {
-							$template_path = WP_PLUGIN_DIR . '/addon-bus-ticket-subscription/inc/';
-							$default_path = WP_PLUGIN_DIR . '/addon-bus-ticket-subscription/inc/';
-						}
-						else {
-							$template_name = 'template-not-found.php';
-						}
-					}
-					if ($bus_type === 'wbtm_seat_private') {
-						if (is_plugin_active('addon-bus-ticket-private/plugin.php')) {
-							$template_path = WP_PLUGIN_DIR . '/addon-bus-ticket-private/inc/';
-							$default_path = WP_PLUGIN_DIR . '/addon-bus-ticket-private/inc/';
-						}
-						else {
-							$template_name = 'template-not-found.php';
-						}
-					}
-					$template = locate_template(array($template_path . $template_name));
-					if (!$template) :
-						$template = $default_path . $template_name;
-					endif;
-					return $template;
+					 $template=WBTM_Functions::template_path('single_page/single-bus.php');
+				}
+				return $template;
+			}
+			public function load_template( $template ): string {
+				if (get_query_var('bussearchlist')) {
+					$template = WBTM_Functions::template_path( 'single_page/bus-search-list.php' );
 				}
 				return $template;
 			}

@@ -1,18 +1,4 @@
-/********************************************************************************************************************/
-@media only screen and (min-width: 10px) {
-	div.wbtm_search_area button,
-	div.wbtm_search_area input.formControl{height: 44px;}
-}
-/********************************************************************************************************************/
-@media only screen and (min-width: 10px) {
-	img.driver_img{max-width: 45px !important;}
-}
-/********************************************************************************************************************/
-@media only screen and (min-width: 10px) {
-}
-/********************************************************************************************************************/
-@media only screen and (min-width: 10px) {
-}
+
 /*=====================*/
 /**
  * All of the CSS for your public-facing functionality should be

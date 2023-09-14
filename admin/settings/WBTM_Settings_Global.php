@@ -507,13 +507,6 @@
 									'default' => 'VIEW'
 								),
 								array(
-									'id' => 'wbtm_view_seats_text',
-									'title' => __('View Seats', 'bus-ticket-booking-with-seat-reservation'),
-									'details' => __('Enter the text which you want to display as View Seats button Result Page.', 'bus-ticket-booking-with-seat-reservation'),
-									'type' => 'text',
-									'default' => 'View Seats'
-								),
-								array(
 									'id' => 'wbtm_start_arrival_time_text',
 									'title' => __('Start & Arrival Time', 'bus-ticket-booking-with-seat-reservation'),
 									'details' => __('Enter the text which you want to display as Start & Arrival Time Details Page.', 'bus-ticket-booking-with-seat-reservation'),
@@ -575,13 +568,6 @@
 									'details' => __('Enter the text which you want to display as Extra Bag Price :', 'bus-ticket-booking-with-seat-reservation'),
 									'type' => 'text',
 									'default' => 'Extra Bag Price :'
-								),
-								array(
-									'id' => 'wbtm_schedule_text',
-									'title' => __('Schedule', 'bus-ticket-booking-with-seat-reservation'),
-									'details' => __('Enter the text which you want to display as Schedule.', 'bus-ticket-booking-with-seat-reservation'),
-									'type' => 'text',
-									'default' => 'Schedule'
 								),
 								array(
 									'id' => 'wbtm_image_text',
@@ -716,13 +702,6 @@
 									'details' => __('Enter the text which you want to display as any date return description.', 'bus-ticket-booking-with-seat-reservation'),
 									'type' => 'text',
 									'default' => 'Same ticket will be valid for return up to next 15 days'
-								),
-								array(
-									'id' => 'wbtm_menu_translate_purchase_ticket',
-									'title' => __('Translate Purchase Ticket', 'bus-ticket-booking-with-seat-reservation'),
-									'details' => __('Translate purchase ticket menu text', 'bus-ticket-booking-with-seat-reservation'),
-									'type' => 'text',
-									'default' => 'Purchase Ticket'
 								),
 							)
 						),

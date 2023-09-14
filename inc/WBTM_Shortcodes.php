@@ -77,7 +77,7 @@
 				$search_path = $params['search-page'];
 				ob_start();
 				do_action('woocommerce_before_single_product');
-				require WBTM_Functions::template_path('search_form.php');
+				require WBTM_Functions::template_path('layout/search_form.php');
 				//echo WBTM_Functions::template_path('search_form');
 				//mage_bus_search_page();
 				do_action('wbtm_after_search_result_section', $params);
