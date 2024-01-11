@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Бронювання квитків на автобус з резервацією місць\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-02 13:56+0000\n"
-"PO-Revision-Date: 2024-01-02 15:16+0200\n"
+"PO-Revision-Date: 2024-01-11 03:14+0200\n"
 "Last-Translator: Ray Sorkin <automart@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk_UA\n"
@@ -59,7 +59,8 @@ msgstr "<span style=\"color:yellow\">Статус</span>"
 msgid "A Complete Bus Ticketing System for WordPress & WooCommerce"
 msgstr "Повна система бронювання квитків на автобус для WordPress та WooCommerce"
 
-#: inc/WBTM_Translations.php:66 admin/settings/WBTM_Extra_Service.php:40 mp_global/class/MP_Settings_Global.php:363
+#: inc/WBTM_Translations.php:66 admin/settings/WBTM_Extra_Service.php:40
+#: mp_global/class/MP_Settings_Global.php:363
 msgid "Action"
 msgstr "Дія"
 
@@ -75,7 +76,8 @@ msgstr "Активувати зараз"
 msgid "Add Extra New Service"
 msgstr "Додати нову додаткову послугу"
 
-#: mp_global/class/MP_Select_Icon_image.php:23 mp_global/class/MP_Select_Icon_image.php:26
+#: mp_global/class/MP_Select_Icon_image.php:23
+#: mp_global/class/MP_Select_Icon_image.php:26
 msgid "Add Icon"
 msgstr "Додати іконку"
 
@@ -83,7 +85,8 @@ msgstr "Додати іконку"
 msgid "Add More Point"
 msgstr "Додати більше пунктів"
 
-#: admin/WBTM_Taxonomy.php:24 admin/WBTM_Taxonomy.php:78 admin/WBTM_CPT.php:31 admin/WBTM_CPT.php:32
+#: admin/WBTM_Taxonomy.php:24 admin/WBTM_Taxonomy.php:78 admin/WBTM_CPT.php:31
+#: admin/WBTM_CPT.php:32
 msgid "Add New"
 msgstr "Додати новий"
 
@@ -147,7 +150,8 @@ msgstr "Вже додано в кошик!"
 msgid "Already Sold"
 msgstr "Вже продано"
 
-#: mp_global/class/MP_Global_Function.php:560 mp_global/class/MP_Global_Function.php:587
+#: mp_global/class/MP_Global_Function.php:560
+#: mp_global/class/MP_Global_Function.php:587
 msgid "An error occurred, please try again."
 msgstr "Сталася помилка, спробуйте ще раз."
 
@@ -199,7 +203,8 @@ msgstr "Посадка "
 msgid "Boarding & Dropping"
 msgstr "Посадка і висадка"
 
-#: admin/settings/WBTM_Settings_Pickup_Point.php:39 admin/settings/WBTM_Pricing_Routing.php:153
+#: admin/settings/WBTM_Settings_Pickup_Point.php:39
+#: admin/settings/WBTM_Pricing_Routing.php:153
 msgid "Boarding Point"
 msgstr "Пункт посадки"
 
@@ -215,7 +220,8 @@ msgstr "Деталі бронювання "
 msgid "Buffer Time"
 msgstr "Буферний час"
 
-#: admin/WBTM_Quick_Setup.php:21 admin/WBTM_Quick_Setup.php:193 inc/WBTM_Functions.php:436
+#: admin/WBTM_Quick_Setup.php:21 admin/WBTM_Quick_Setup.php:193
+#: inc/WBTM_Functions.php:436
 msgid "Bus"
 msgstr "Автобус"
 
@@ -269,7 +275,7 @@ msgstr "КУПИТИ PRO"
 
 #: inc/WBTM_Translations.php:18
 msgid "BUY TICKET"
-msgstr "КУПИТИ КВИТОК"
+msgstr "ЗАБРОНЮВАТИ МІСЦЕ"
 
 #: admin/WBTM_Settings.php:76
 msgid "By default Boarding Time is ON but you can keep it off by switching this option"
@@ -335,11 +341,13 @@ msgstr "Завершено"
 msgid "content.xml"
 msgstr "зміст.xml"
 
-#: admin/settings/WBTM_Seat_Configuration.php:100 admin/settings/WBTM_Seat_Configuration.php:146
+#: admin/settings/WBTM_Seat_Configuration.php:100
+#: admin/settings/WBTM_Seat_Configuration.php:146
 msgid "Create seat Plan"
 msgstr "Створити план місць"
 
-#: mp_global/class/MP_Settings_Global.php:33 mp_global/class/MP_Settings_Global.php:329
+#: mp_global/class/MP_Settings_Global.php:33
+#: mp_global/class/MP_Settings_Global.php:329
 msgid "Custom CSS"
 msgstr "Користувацький CSS"
 
@@ -611,7 +619,8 @@ msgstr "http://mage-people.com"
 msgid "http://www.mage-people.com/"
 msgstr "http://www.mage-people.com/"
 
-#: admin/WBTM_Global_settings.php:87 mp_global/class/MP_Select_Icon_image.php:161
+#: admin/WBTM_Global_settings.php:87
+#: mp_global/class/MP_Select_Icon_image.php:161
 msgid "Icon"
 msgstr "Іконка"
 
@@ -647,7 +656,9 @@ msgstr "Якщо ви хочете вимкнути новий редактор 
 msgid "If you want to run particular date  select Particular or your bus run repeatedly select Repeat"
 msgstr "Якщо ви хочете запустити конкретну дату, виберіть Конкретну або якщо ваш автобус курсує повторно, виберіть Повторити"
 
-#: inc/WBTM_Translations.php:48 mp_global/class/MP_Select_Icon_image.php:106 mp_global/class/MP_Select_Icon_image.php:132 mp_global/class/MP_Select_Icon_image.php:159
+#: inc/WBTM_Translations.php:48 mp_global/class/MP_Select_Icon_image.php:106
+#: mp_global/class/MP_Select_Icon_image.php:132
+#: mp_global/class/MP_Select_Icon_image.php:159
 msgid "Image"
 msgstr "Зображення"
 
@@ -735,11 +746,14 @@ msgstr "Довічно"
 msgid "list"
 msgstr "список"
 
-#: mp_global/class/MP_Custom_Layout.php:39 mp_global/class/MP_Custom_Layout.php:160 mp_global/class/MP_Custom_Layout.php:161
+#: mp_global/class/MP_Custom_Layout.php:39
+#: mp_global/class/MP_Custom_Layout.php:160
+#: mp_global/class/MP_Custom_Layout.php:161
 msgid "Load More"
 msgstr "Завантажити більше"
 
-#: mp_global/class/MP_Settings_Global.php:37 mp_global/class/MP_Settings_Global.php:340
+#: mp_global/class/MP_Settings_Global.php:37
+#: mp_global/class/MP_Settings_Global.php:340
 msgid "Mage-People License"
 msgstr "Ліцензія Mage-People"
 
@@ -819,7 +833,10 @@ msgstr "Не знайдено в кошику"
 msgid "Now select the user of your website to assign the contents from the dropdown, and tick on the Download Attachemnt tick box & Run the Process. After a few minute you will see the Success message. All Done! Have Fun."
 msgstr "Тепер виберіть користувача вашого сайту, щоб призначити вміст зі спадного меню, поставте галочку у полі 'Завантажити вкладення' і запустіть процес. Через кілька хвилин ви побачите повідомлення про успіх. Все готово! Насолоджуйтесь."
 
-#: mp_global/class/MP_Settings_Global.php:151 mp_global/class/MP_Settings_Global.php:173 mp_global/class/MP_Settings_Global.php:197 mp_global/class/MP_Settings_Global.php:208
+#: mp_global/class/MP_Settings_Global.php:151
+#: mp_global/class/MP_Settings_Global.php:173
+#: mp_global/class/MP_Settings_Global.php:197
+#: mp_global/class/MP_Settings_Global.php:208
 msgid "Off"
 msgstr "Вимк."
 
@@ -835,7 +852,10 @@ msgstr "Дата відключення в діапазоні"
 msgid "Off Day"
 msgstr "Вихідний день"
 
-#: mp_global/class/MP_Settings_Global.php:150 mp_global/class/MP_Settings_Global.php:172 mp_global/class/MP_Settings_Global.php:196 mp_global/class/MP_Settings_Global.php:207
+#: mp_global/class/MP_Settings_Global.php:150
+#: mp_global/class/MP_Settings_Global.php:172
+#: mp_global/class/MP_Settings_Global.php:196
+#: mp_global/class/MP_Settings_Global.php:207
 msgid "ON"
 msgstr "Увімк."
 
@@ -863,7 +883,8 @@ msgstr "Загальна сума замовлення"
 msgid "Parameter"
 msgstr "Параметр"
 
-#: admin/WBTM_Taxonomy.php:21 admin/WBTM_Taxonomy.php:22 admin/WBTM_Taxonomy.php:75
+#: admin/WBTM_Taxonomy.php:21 admin/WBTM_Taxonomy.php:22
+#: admin/WBTM_Taxonomy.php:75
 msgid "Parent"
 msgstr "Батько"
 
@@ -899,7 +920,8 @@ msgstr "Очікування"
 msgid "Pickup Info"
 msgstr "Інформація про забирання"
 
-#: admin/WBTM_Taxonomy.php:71 admin/WBTM_Taxonomy.php:75 admin/WBTM_Taxonomy.php:78 inc/WBTM_Translations.php:27
+#: admin/WBTM_Taxonomy.php:71 admin/WBTM_Taxonomy.php:75
+#: admin/WBTM_Taxonomy.php:78 inc/WBTM_Translations.php:27
 msgid "Pickup Point"
 msgstr "Пункт забирання"
 
@@ -943,7 +965,9 @@ msgstr "Будь ласка, виберіть"
 msgid "Please select"
 msgstr "Будь ласка, виберіть"
 
-#: admin/settings/WBTM_Seat_Configuration.php:35 admin/settings/WBTM_Seat_Configuration.php:77 admin/settings/WBTM_Date_Settings.php:44
+#: admin/settings/WBTM_Seat_Configuration.php:35
+#: admin/settings/WBTM_Seat_Configuration.php:77
+#: admin/settings/WBTM_Date_Settings.php:44
 msgid "Please select ..."
 msgstr "Будь ласка, виберіть ..."
 
@@ -1099,7 +1123,8 @@ msgstr "Тип поля кількості"
 msgid "Quantity"
 msgstr "Кількість"
 
-#: admin/WBTM_Quick_Setup.php:17 admin/WBTM_Quick_Setup.php:18 admin/WBTM_Quick_Setup.php:22
+#: admin/WBTM_Quick_Setup.php:17 admin/WBTM_Quick_Setup.php:18
+#: admin/WBTM_Quick_Setup.php:22
 msgid "Quick Setup"
 msgstr "Швидке налаштування"
 
@@ -1107,7 +1132,8 @@ msgstr "Швидке налаштування"
 msgid "Remove"
 msgstr "Видалити"
 
-#: mp_global/class/MP_Select_Icon_image.php:30 mp_global/class/MP_Select_Icon_image.php:150
+#: mp_global/class/MP_Select_Icon_image.php:30
+#: mp_global/class/MP_Select_Icon_image.php:150
 msgid "Remove Icon"
 msgstr "Видалити іконку"
 
@@ -1171,7 +1197,8 @@ msgstr "Місце"
 msgid "Seat Booked Status"
 msgstr "Статус заброньованого місця"
 
-#: admin/settings/WBTM_Seat_Configuration.php:95 admin/settings/WBTM_Seat_Configuration.php:136
+#: admin/settings/WBTM_Seat_Configuration.php:95
+#: admin/settings/WBTM_Seat_Configuration.php:136
 msgid "Seat Columns : "
 msgstr "Колонки місць : "
 
@@ -1195,7 +1222,8 @@ msgstr "План місць для нижньої палуби"
 msgid "Seat Plan for Upper Deck"
 msgstr "План місць для верхньої палуби"
 
-#: admin/settings/WBTM_Seat_Configuration.php:103 admin/settings/WBTM_Seat_Configuration.php:149
+#: admin/settings/WBTM_Seat_Configuration.php:103
+#: admin/settings/WBTM_Seat_Configuration.php:149
 msgid "Seat Plan Settings"
 msgstr "Налаштування плану місць"
 
@@ -1515,7 +1543,8 @@ msgstr "Загальна кількість місць"
 msgid "Tuesday"
 msgstr "Вівторок"
 
-#: admin/WBTM_Taxonomy.php:20 admin/WBTM_Taxonomy.php:21 admin/WBTM_CPT.php:84 mp_global/class/MP_Settings_Global.php:358
+#: admin/WBTM_Taxonomy.php:20 admin/WBTM_Taxonomy.php:21 admin/WBTM_CPT.php:84
+#: mp_global/class/MP_Settings_Global.php:358
 msgid "Type"
 msgstr "Тип"
 
